@@ -1,8 +1,8 @@
 (function(){
   var base_layer = new L.TileLayer('https://{s}.tiles.mapbox.com/v4/base.mapbox-streets+bg-e8e8e8_scale-1_water-0.13x0.13;0.00x0.00;0.81x0.81;0.00x1.00_streets-0.08x0.08;0.00x0.00;0.11x1.00;0.00x1.00_landuse-0.10x0.10;0.00x0.00;0.76x0.98;0.00x1.00_buildings-0.08x0.08;0.00x0.00;0.11x1.00;0.00x1.00/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q', {subdomains: 'abcd'});
   var map_options = {
-    center: [35.1859418, -80.8342753],
-    zoom: 14,
+    center: [36.2992442, -76.2240738],
+    zoom: 17,
     layers: [base_layer]
   };
   var map = new L.Map($('.map')[0], map_options);
@@ -28,6 +28,7 @@
       return key_vals;
     }());
     var url_template = url + '?' + params.join('&');
+    $('#proxy_url_template').val(url_template);
     if (ags_layer) {
       ags_layer.setUrl(url_template);
     } else {
