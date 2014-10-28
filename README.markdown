@@ -54,3 +54,9 @@ Also accepted are the URL parameters [supported by ArcGIS Server](http://resourc
 * `transparent` - Helpful for overlay layers where you want to see stuff that's underneath. Set to `true` for anything other than a base map.
 * `layers` - Which specific layers from the map service you want in your map tiles.
 * `format` - Switch between png and jpg formats.
+
+### Use a Hosted Version
+
+I've deployed an instance of this application at Heroku. You're free to use it as you wish. In the examples above just use the `tileify-ags.herokuapp.com` domain instead of `localhost:5000`.
+
+http://tileify-ags.herokuapp.com
