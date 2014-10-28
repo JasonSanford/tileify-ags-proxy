@@ -24,9 +24,13 @@ git push heroku master
 
 After running your application visit the application root (`http://localhost:5000/`) for some documentation and an interactive demo.
 
-The tiling proxy can be found at `http://localhost:5000/{z}/{x}/{y}`. Those funny looking letters are placholders for the tiles located at specific zoom levels and coordinates. Your [mapping library](http://leafletjs.com/reference.html#tilelayer) should automatically replace these with actual values at runtime.
+The tiling proxy can be found at `http://localhost:5000/tiles/{z}/{x}/{y}`. Those funny looking letters are placholders for the tiles located at specific zoom levels and coordinates. Your [mapping library](http://leafletjs.com/reference.html#tilelayer) should automatically replace these with actual values at runtime.
 
-There is one required URL parameter to add, `url`. This is the ArcGIS Server map server endpoint and will look something like `http://maps.ci.charlotte.nc.us/arcgis/rest/services/WEB/BaseMap/MapServer`. This value you add to the URL *should be URL encoded!*
+There is one required URL parameter to add, `url`. This is the ArcGIS Server map server endpoint and will look something like:
+
+    http://maps.ci.charlotte.nc.us/arcgis/rest/services/WEB/BaseMap/MapServer
+
+This value you add to the URL **should be URL encoded!**
 
 You can URL encode by doing:
 
