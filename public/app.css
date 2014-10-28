@@ -1,0 +1,35 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.map {
+  height: 100%;
+  margin-left: 300px;
+}
+
+.left {
+  width: 300px;
+  max-width: 100%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+}
+
+.params {
+  margin-bottom: 5px;
+}
+
+.params .param {
+  width: 130px;
+  display: inline;
+}
+
+.params .param-value {
+  float: right;
+}

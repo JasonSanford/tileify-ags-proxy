@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, resp) {
-  resp.send('Hello World!');
+  resp.sendfile('public/index.html')
 });
 
 app.get('/tiles/:z/:x/:y', function(req, resp) {
