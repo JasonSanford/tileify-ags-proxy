@@ -2,6 +2,8 @@
 
 This is a node application that uses [tileify-ags](https://github.com/JasonSanford/tileify-ags) to create a simple proxy for serving up regular old, uncached ArcGIS Server map services as map tiles that can be easily added to any slippy map (Leaflet, OpenLayers, Google Maps).
 
+[View a demo](http://tileify-ags.herokuapp.com/)
+
 ### Install - Run
 
 ```
