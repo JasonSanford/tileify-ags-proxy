@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, resp) {
-  resp.sendfile('public/index.html')
+  resp.sendfile('public/index.html');
 });
 
 app.get('/tiles/:z/:x/:y', function(req, resp) {
@@ -17,7 +17,7 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
   var y = parseInt(req.params.y, 10);
 
   //pull out proxy query params
-  var agsServerUrl = req.query.url;
+  var ags_server_url = req.query.url;
   var redirect = req.query.redirect != null && req.query.redirect.toLowerCase() !== "false" ? true : false;
 
   //grab all other query params intended for the ags server
@@ -27,7 +27,7 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
 
   //create the tile url
   var tiler = new TileifyAGS(url_param_config);
-  var url = tiler.getTileUrl(agsServerUrl, x, y, z);
+  var url = tiler.getTileUrl(ags_server_url, x, y, z);
 
   //serve it up!
   if (redirect) {
