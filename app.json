@@ -1,0 +1,6 @@
+{
+  "name": "Tileify AGS Proxy",
+  "description": "Fetch slippy map tiles from ArcGIS Server",
+  "website": "https://github.com/JasonSanford/tileify-ags-proxy",
+  "repository": "https://github.com/JasonSanford/tileify-ags-proxy"
+}

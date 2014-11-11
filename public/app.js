@@ -3,7 +3,8 @@
   var map_options = {
     center: [36.2992442, -76.2240738],
     zoom: 17,
-    layers: [base_layer]
+    layers: [base_layer],
+    maxZoom: 21
   };
   var map = new L.Map($('.map')[0], map_options);
 
@@ -32,7 +33,7 @@
     if (ags_layer) {
       ags_layer.setUrl(url_template);
     } else {
-      ags_layer = new L.TileLayer(url_template);
+      ags_layer = new L.TileLayer(url_template, {maxZoom: 21});
       map.addLayer(ags_layer);
     }
   }

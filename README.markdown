@@ -14,6 +14,14 @@ npm start
 
 ### Deployment
 
+#### The Easy Way
+
+Click this button.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/JasonSanford/tileify-ags-proxy)
+
+#### The Slightly Harder But Still Really Easy Way
+
 The `Procfile` makes this application easy to deploy to [heroku](https://www.heroku.com/).
 
 ```
