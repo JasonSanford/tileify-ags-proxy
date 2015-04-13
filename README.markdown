@@ -55,6 +55,12 @@ An example URL looks like:
 
     http://localhost:5000/{z}/{x}/{y}?url=http%3A%2F%2Fmaps.ci.charlotte.nc.us%2Farcgis%2Frest%2Fservices%2FWEB%2FBaseMap%2FMapServer
 
+#### ImageServer
+
+ArcGIS Server ImageServer services are also supported. Instead of using the `MapServer` services as seen above, just use `ImageServer`:
+
+    http://gisdev.lakecountyfl.gov/lakegis/rest/services/Aerial2014/ImageServer
+
 #### Additional URL Parameters
 
 In addition to the required `url` URL parameter, you can also pass a `&redirect=true` parameter that will perform an HTTP redirect to the map server instead of serving it itself.
