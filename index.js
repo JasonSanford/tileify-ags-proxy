@@ -18,12 +18,14 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
 
   //pull out proxy query params
   var ags_server_url = req.query.url;
+  var referer = req.query.referer;
   var redirect = req.query.redirect != null && req.query.redirect.toLowerCase() !== "false" ? true : false;
 
   //grab all other query params intended for the ags server
   var url_param_config = req.query;
   delete url_param_config.url;
   delete url_param_config.redirect;
+  delete url_param_config.referer;
 
   //create the tile url
   var tiler = new TileifyAGS(url_param_config);
@@ -33,6 +35,13 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
   if (redirect) {
     resp.redirect(url);
   } else {
+    if (referer) {
+      url = {
+        url: url,
+        headers: { 'Referer': referer }
+      };
+    }
+
     req.pipe(request(url)).pipe(resp);
   }
 });
