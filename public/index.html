@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tileify AGS - Fetch slippy map tiles from an uncached ArcGIS Server map">
-    <meta name="author" content="Jason Sanford">
-    <title>Tileify AGS</title>
+    <meta name="description" content="ArcGIS Server Proxy - Fetch slippy map tiles from an uncached ArcGIS Server map">
+    <meta name="author" content="OpenStreetMap US">
+    <title>ArcGIS Server Proxy</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.3/dist/leaflet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
@@ -14,31 +14,36 @@
   <body>
     <div class="wrapper">
       <div class="left">
-        <h3>Tileify AGS Proxy</h3>
+        <h3>ArcGIS Server Proxy</h3>
         <p>
-          Use ArcGIS Server map services in common web mapping APIs like Leaflet, OpenLayers and Google Maps.
+          Use ArcGIS Server map services as background layers in OpenStreetMap editors like iD and JOSM.
         </p>
-        <p>
-          Check out the <a href="https://github.com/JasonSanford/tileify-ags-proxy">GitHub repo</a> for code and more documentation.
+        <p><font size="2">
+          Hosted by <a href="http://www.openstreetmap.us">OpenStreetMap US</a><br>
+          <a href="https://github.com/JasonSanford/tileify-ags-proxy">Forked with ♥</a><br>
+          Code available <a href="https://github.com/osmus/tileify-ags-proxy">on Github</a>
+        </font>
         </p>
         <hr>
         <p>
-          To get started paste a ArcGIS Server map service URL below and modify the URL parameters as necessary. Click "Update Tile Layer" to refresh the map.
+          Paste your ArcGIS Server map service URL (ending with ..../MapServer) below.<br><br>
+          Use the URL parameters to specify a layer within the map service or make the background transparent. <br><br>
+          Click "Update Tile Layer" to refresh the map.
         </p>
         <form role="form">
           <div class="form-group">
             <label for="ags_url">ArcGIS Server URL</label>
-            <input type="text" class="form-control" value="http://gis-web.co.union.nc.us/arcgis/rest/services/PWGIS_Web/Operational_Layers/MapServer" id="ags_url">
+            <input type="text" class="form-control" value="https://maps7.arcgisonline.com/arcgis/rest/services/FAA_Sectional_Charts/MapServer" id="ags_url">
           </div>
           <div class="form-group">
             <label>URL Parameters (key|value)</label>
             <div class="params">
               <input type="text" class="form-control param param-key" value="transparent">
-              <input type="text" class="form-control param param-value" value="true">
+              <input type="text" class="form-control param param-value" value="">
             </div>
             <div class="params">
               <input type="text" class="form-control param param-key" value="layers">
-              <input type="text" class="form-control param param-value" value="show:20">
+              <input type="text" class="form-control param param-value" value="">
             </div>
             <div class="params">
               <input type="text" class="form-control param param-key" value="">
