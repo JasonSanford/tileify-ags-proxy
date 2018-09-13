@@ -1,44 +1,54 @@
-var express = require('express'),
-    request = require('request'),
-    TileifyAGS = require('tileify-ags').TileifyAGS;
+const path = require('path');
 
-var app = express();
+const express = require('express');
+const request = require('request');
+const TileifyAGS = require('tileify-ags');
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+const app = express();
 
-app.get('/', function(req, resp) {
+const port = process.env.PORT || 5000;
+
+app.set('port', port);
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, resp) => {
   resp.sendfile('public/index.html');
 });
 
-app.get('/tiles/:z/:x/:y', function(req, resp) {
-  var z = parseInt(req.params.z, 10);
-  var x = parseInt(req.params.x, 10);
-  var y = parseInt(req.params.y, 10);
+app.get('/tiles/:z/:x/:y', (req, resp) => {
+  const z = parseInt(req.params.z, 10);
+  const x = parseInt(req.params.x, 10);
+  const y = parseInt(req.params.y, 10);
 
-  //pull out proxy query params
-  var ags_server_url = req.query.url;
-  var referer = req.query.referer;
-  var redirect = req.query.redirect != null && req.query.redirect.toLowerCase() !== "false" ? true : false;
+  const {
+    url: agsServerUrl,
+    referer,
+  } = req.query;
 
-  //grab all other query params intended for the ags server
-  var url_param_config = req.query;
-  delete url_param_config.url;
-  delete url_param_config.redirect;
-  delete url_param_config.referer;
+  let { pixelRatio } = req.query;
 
-  //create the tile url
-  var tiler = new TileifyAGS(url_param_config);
-  var url = tiler.getTileUrl(ags_server_url, x, y, z);
+  const redirect = req.query.redirect != null && req.query.redirect.toLowerCase() !== 'false';
 
-  //serve it up!
+  if (pixelRatio) {
+    pixelRatio = parseInt(pixelRatio, 10);
+  }
+
+  const urlParamConfig = req.query;
+  delete urlParamConfig.url;
+  delete urlParamConfig.redirect;
+  delete urlParamConfig.referer;
+  delete urlParamConfig.pixelRatio;
+
+  const tiler = new TileifyAGS(agsServerUrl, urlParamConfig, pixelRatio);
+  let url = tiler.getTileUrl(x, y, z);
+
   if (redirect) {
     resp.redirect(url);
   } else {
     if (referer) {
       url = {
-        url: url,
-        headers: { 'Referer': referer }
+        url,
+        headers: { Referer: referer },
       };
     }
 
@@ -46,6 +56,4 @@ app.get('/tiles/:z/:x/:y', function(req, resp) {
   }
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Running at port: ' + app.get('port'));
-});
+app.listen(app.get('port'), () => console.log(`Running at port: ${port}`));
