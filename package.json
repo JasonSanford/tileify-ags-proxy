@@ -1,6 +1,6 @@
 {
   "name": "tileify-ags-proxy",
-  "version": "0.0.2",
+  "version": "2.0.0",
   "description": "A proxy for fetching slippy map tiles from an uncached ArcGIS Server map",
   "main": "index.js",
   "scripts": {
