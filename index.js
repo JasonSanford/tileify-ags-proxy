@@ -15,7 +15,7 @@ app.get('/', (req, resp) => {
   resp.sendfile('public/index.html');
 });
 
-app.get('/tiles/:z/:x/:y', (req, resp) => {
+app.get('/tiles/:z/:x/:y', (req, resp, next) => {
   const z = parseInt(req.params.z, 10);
   const x = parseInt(req.params.x, 10);
   const y = parseInt(req.params.y, 10);
@@ -52,7 +52,7 @@ app.get('/tiles/:z/:x/:y', (req, resp) => {
       };
     }
 
-    req.pipe(request(url)).pipe(resp);
+    req.pipe(request(url).on("error", next)).pipe(resp);
   }
 });
 
